@@ -2,28 +2,6 @@ import json
 from datetime import datetime
 import os
 
-
-def modifier_chemin_image(destination, fichier_json):
-    destination = os.path.expanduser(destination)
-    fichier_json = os.path.expanduser(fichier_json)
-
-    home_dir = os.path.expanduser('~')
-
-    with open(fichier_json, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-
-    for item in data:
-
-        nom_fichier = os.path.basename(item["image"])
-        item["image"] = os.path.join(destination, nom_fichier)
-        if item["image"].startswith(home_dir):
-            item["image"] = item["image"].replace(home_dir, "~")
-    
-    with open(fichier_json, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
-
-    print("Chemins modifiés")
-
     
 def tri(fichier_json, intervalle_secondes=30):
     '''
