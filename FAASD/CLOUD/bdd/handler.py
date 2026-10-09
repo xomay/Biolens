@@ -15,8 +15,8 @@ import stat
 
 def handle(event, context):
 
-    DISCORD_TOKEN="REDACTED_DISCORD_TOKEN"
-    DISCORD_CHANNEL_ID=1361321354602873092
+    DISCORD_TOKEN=os.getenv('DISCORD_TOKEN', '')
+    DISCORD_CHANNEL_ID=os.getenv('DISCORD_CHANNEL_ID', '')
 
     load_dotenv()
 
